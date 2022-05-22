@@ -1,4 +1,5 @@
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { Colors } from '../../assests/styles/colors';
 import { formatCurrentMonth } from '../../helpers/dateFilter';
 import { ResumeItem } from '../ResumeItem';
 import * as C from './styles';
@@ -42,7 +43,7 @@ export function InfoArea({ currentMonth, onMonthChange, income, expense }: Props
         <ResumeItem
           title='Balanço'
           value={income - expense}
-          color={(income - expense) < 0 ? '#F03E3E' : '#22B8CF'}
+          color={(income - expense) < 0 ? `${Colors.expenseColor}` : `${Colors.successColor}`}
         />
       </C.ResumeArea>
     </C.Container>

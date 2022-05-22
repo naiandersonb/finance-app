@@ -1,3 +1,4 @@
+import { Colors } from '../../assests/styles/colors';
 import { categories } from '../../data/categories';
 import { formatDate } from '../../helpers/dateFilter';
 import { Item } from '../../types/Item';
@@ -14,7 +15,10 @@ export function TableItem({ item }: Props) {
         {formatDate(item.date)}
       </C.DateCell>
       <C.CategoryCell>
-        <C.Category color={categories[item.category].color} >
+        <C.Category
+          color={categories[item.category].color}
+          background={categories[item.category].background}
+        >
           {categories[item.category].title}
         </C.Category>
       </C.CategoryCell>
@@ -22,7 +26,7 @@ export function TableItem({ item }: Props) {
         {item.title}
       </C.TitleCell>
       <C.ValueCell>
-        <C.Value color={categories[item.category].expense ? '#F03E3E' : '#22B8CF'}>
+        <C.Value color={categories[item.category].expense ? `${Colors.expenseColor}` : `${Colors.successColor}`}>
           R$ {item.value}
         </C.Value>
       </C.ValueCell>

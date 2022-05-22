@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { BsGithub } from 'react-icons/bs';
+import { FaLinkedinIn } from 'react-icons/fa';
 import * as C from './App.styles';
 import { InfoArea } from './components/InfoArea';
 import { InputArea } from './components/InputArea';
@@ -48,20 +50,39 @@ export function App() {
   return (
     <C.Container>
       <C.Header>
-        <C.headerText>Finance.<span>app</span> </C.headerText>
+        <div className="header-container">
+          <C.headerText>Finance.<span>app</span> </C.headerText>
+          <C.SocialArea>
+            <C.SocialLink href="https://github.com/naiandersonb/finance-app" target='_blank' rel='noreferrer'>
+              <BsGithub />
+            </C.SocialLink>
+            <C.SocialLink href="https://www.linkedin.com/in/naianderson-bruno-franca/" target='_blank' rel='noreferrer'>
+              <FaLinkedinIn />
+            </C.SocialLink>
+          </C.SocialArea>
+        </div>
       </C.Header>
       <C.Body>
+        <div className="info-area">
+          <h3>Resumo do mês</h3>
+          <InfoArea
+            currentMonth={currentMonth}
+            onMonthChange={handleMonthChange}
+            income={income}
+            expense={expense}
+          />
+        </div>
 
-        <InfoArea
-          currentMonth={currentMonth}
-          onMonthChange={handleMonthChange}
-          income={income}
-          expense={expense}
-        />
+        <div className="input-area">
+          <h3>Novo dado</h3>
+          <InputArea onAdd={handleAddItem} />
+        </div>
 
-        <InputArea onAdd={handleAddItem} />
+        <div className="table-area">
+          <TableArea list={filteredList} />
+        </div>
 
-        <TableArea list={filteredList} />
+
 
       </C.Body>
     </C.Container>

@@ -1,23 +1,5 @@
 import styled from 'styled-components';
 
-export const Category = styled.div<{ color: string }>`
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #000;
-  background-color: ${props => props.color};
-  font-size: 14px;
-
-  @media(max-width: 719px) {
-   display: flex;
-   text-align: end;
-  }
-`;
-
-export const Value = styled.div<{ color: string }>`
-  color: ${props => props.color};
-`;
-
 export const Card = styled.div`
   display: grid;
   grid-template-columns: 10% 15% 1fr 20%;
@@ -45,10 +27,32 @@ export const Card = styled.div`
   }
 `;
 
+export const Category = styled.div<{ color: string, background: string }>`
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: ${props => props.color};
+  background-color: ${props => props.background};
+  font-size: 14px;
+  font-weight: 600;
+
+  @media(max-width: 719px) {
+   display: flex;
+   text-align: end;
+  }
+`;
+
+export const Value = styled.div<{ color: string }>`
+  color: ${props => props.color};
+  font-weight: 600;
+`;
+
+
 export const DateCell = styled.div`
   grid-area: date;
   width: 100%;
   display: flex;
+  font-weight: 600;
 
   @media(max-width: 839px) {
    color: #868E96;
@@ -77,6 +81,7 @@ export const CategoryCell = styled.div`
   grid-area: category;
   width: 100%;
   display: flex;
+
   @media(max-width: 719px) {
     justify-content: flex-end;
   }

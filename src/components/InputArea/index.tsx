@@ -1,5 +1,6 @@
 import { Button, NumberInput, Select, TextInput } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
+import 'dayjs/locale/pt-br';
 import { useState } from 'react';
 import { FiCalendar, FiPlus, FiX } from 'react-icons/fi';
 import { categories } from '../../data/categories';
@@ -27,7 +28,7 @@ export function InputArea({ onAdd }: Props) {
 
   const handleSetDisplayMenu = () => {
     if (showForm === 'none') {
-      setShowForm('flex');
+      setShowForm('grid');
     } else {
       setShowForm('none');
     }
@@ -87,15 +88,20 @@ export function InputArea({ onAdd }: Props) {
     <>
       <C.Background display={showForm}>
         <C.Container display={showForm}>
+
           <DatePicker
-            className='width100'
+            locale='pt-br'
+            size='md'
+            className='width100 date-input'
             placeholder="Definir a data"
             label='Data'
             onChange={(e: Date) => setDateField(e)}
             icon={<FiCalendar size={16} />}
           />
+
           <Select
-            className='width100'
+            size='md'
+            className='width100 category-input'
             label='Categoria'
             placeholder='Defina a categoria'
             onChange={(e: string) => setCategoryField(e)}
@@ -103,14 +109,16 @@ export function InputArea({ onAdd }: Props) {
           />
 
           <TextInput
-            className='width100'
+            size='md'
+            className='width100 title-input'
             label='Título'
             value={titleField}
             onChange={e => setTitleFieldField(e.target.value)}
           />
 
           <NumberInput
-            className='width100'
+            size='md'
+            className='width100 value-input'
             placeholder='Quanto custou'
             label='Valor'
             value={valueField}
@@ -118,7 +126,7 @@ export function InputArea({ onAdd }: Props) {
             defaultValue={0}
           />
 
-          <Button onClick={handleAddEvent} className='width100'>
+          <Button onClick={handleAddEvent} className='width100 button' size='md'>
             Adicionar
           </Button>
 

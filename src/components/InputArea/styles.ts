@@ -3,25 +3,53 @@ import styled from 'styled-components';
 export const Container = styled.div<{ display: string }>`
   background-color: #fff;
   border: 1px solid #DFDFDF;
-  box-shadow: 5px 8px 35px rgba(0, 0, 0, 0.13);
   border-radius: 6px;
   padding: 20px;
   margin-top: 20px;
-  margin-left: 1em;
-  margin-right: 1em;
-  display: flex;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, max-content);
   gap: 1em;
+  grid-template-areas:
+    'title title title'
+    'date category value'
+    '. . button';
 
-  @media(max-width: 669px) {
-    flex-direction: column;
-    align-items: center;
+  .title-input {
+    grid-area: title;
+  }
+  .date-input {
+    grid-area: date;
+  }
+  .category-input {
+    grid-area: category;
+  }
+  .value-input {
+    grid-area: value;
+  }
+
+  .button {
+    background-color: #000;
+    grid-area: button;
+  }
+
+  @media(max-width: 839px) {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 120px;
+    bottom: 80px;
     z-index: 100;
     display: ${props => props.display};
+    margin: 1em;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, max-content);
+    grid-template-areas:
+      'title'
+      'date'
+      'category'
+      'value'
+      'button';
 
     .width100 {
       width: 100%;
@@ -31,7 +59,7 @@ export const Container = styled.div<{ display: string }>`
 
 export const Button = styled.button`
   display: none;
-  @media(max-width: 669px) {
+  @media(max-width: 839px) {
     font-size: 2em;
     font-weight: 600;
     width: 60px;
@@ -41,17 +69,17 @@ export const Button = styled.button`
     justify-content: center;
     border-radius: 50%;
     border: 0;
-    background-color: #1C7ED6;
+    background-color: #000;
     box-shadow: 0px 0px 29px rgba(0, 0, 0, 0.2);
     color: #fff;
     position: fixed;
     bottom: 24px;
-    right: 24px;
+    right: 18px;
   }
 `;
 
 export const Background = styled.div<{ display: string }>`
-  @media(max-width: 669px) {
+  @media(max-width: 839px) {
     display: ${props => props.display};
     position: fixed;
     top: 0;
